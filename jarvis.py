@@ -49,3 +49,19 @@ def aiProcess(command):
     )
 
     return completion.choices[0].message.content
+def processCommand(c):
+    if "open google" in c.lower():
+        webbrowser.open("https://google.com")
+    elif "open facebook" in c.lower():
+        webbrowser.open("https://facebook.com")
+    elif "open youtube" in c.lower():
+        webbrowser.open("https://youtube.com")
+    elif "open linkedin" in c.lower():
+        webbrowser.open("https://linkedin.com")
+    elif c.lower().startswith("play"):
+        song = c.lower().split(" ")[1]
+        link = musicLibrary.music[song]
+        webbrowser.open(link)
+    else:
+        output = aiProcess(c)
+        speak(output)
